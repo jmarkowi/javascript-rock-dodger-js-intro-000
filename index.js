@@ -224,7 +224,7 @@ function changeDodgerColor() {
 }
 
 function powerUp() {
-  
+
 }
 
 /**
