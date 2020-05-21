@@ -2,34 +2,34 @@ JavaScript Rock Dodger
 ---
 ## My Features
 
-After completing the final lab, I decided to continue working on it to add more 
-features. As a basic game it was...lacking. I wanted to addmore features that a 
+After completing the final lab, I decided to continue working on it to add more
+features. As a basic game it was...lacking. I wanted to addmore features that a
 game like this would have. Plus, I wanted to keep tinkering and learning more JavaScript!
 
 _Successfully implemented features:_
-1. Rocks Dodged Counter: Displays the running total number of rocks successfully 
+1. Rocks Dodged Counter: Displays the running total number of rocks successfully
    dodged. Total is also included in the final "You Lose!"
    alert at the end of the game (grammatically correct when only 1 rock was dodged).
-2. Change Dodger Color: On clicking the dodger and pressing the up- or down-arrow 
-   keys, the dodger cycles through 10 colors, including the tricky "black" 
-   option. Clicking or pressing the up-arrow cycles forward through the colors, 
+2. Change Dodger Color: On clicking the dodger and pressing the up- or down-arrow
+   keys, the dodger cycles through 10 colors, including the tricky "black"
+   option. Clicking or pressing the up-arrow cycles forward through the colors,
    while pressing the down-arrow cycles the opposite direction through the list.
 
 _In-progress features:_
---Increase Difficulty: Currently, the falling speeds of the rocks rocks increases 
-  automatically every 20 seconds. I'd also like the frequency of rock production 
-  to increase to more than 1 rock/second (either 2+ rocks at the same time, or 
+--Increase Difficulty: Currently, the falling speeds of the rocks rocks increases
+  automatically every 20 seconds. I'd also like the frequency of rock production
+  to increase to more than 1 rock/second (either 2+ rocks at the same time, or
   more frequently, or both). Or maybe instead?
 
 _Future features:_
-1. Powerups: Every 30 seconds, a Powerup falls in addition to a rock. Powerups 
+1. Powerups: Every 30 seconds, a Powerup falls in addition to a rock. Powerups
    will be represented by different icons. Not all will be helpful!
      a) Slowdown: reduce speed/frequency of rocks
      b) Speedup: increase speed/frequency of rocks
      c) Dodger size: reduce or increase size of the dodger
      d) Mario Star: invicible dodger for 10 seconds
-2. High Score List: Displayed after you lose, shows recent games in order. Maybe 
-   even asks for your initials/name, old-school arcade style? (Save even if you 
+2. High Score List: Displayed after you lose, shows recent games in order. Maybe
+   even asks for your initials/name, old-school arcade style? (Save even if you
    reload the page?)
 3. Animated Backdrop: Before initial press of "Start", show an animation of the
    game being played in the background (rocks falling, dodger moving).
