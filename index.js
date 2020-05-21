@@ -131,11 +131,10 @@ function createRock(x) {
  */
 function endGame() {
   clearInterval(gameInterval)
-  for (i = 0; i < ROCKS.length; i++) {
-    var removeRock = ROCKS[i]
-    removeRock.remove()
-  }
+  ROCKS.forEach(function(rock) { rock.remove() })
   window.removeEventListener('keydown', moveDodger)
+  START.innerHTML = 'Play again?'
+  START.style.display = 'inline'
   if (rockCount == 1) {
     alert("YOU LOSE! YOU DODGED 1 ROCK!")
   } else {
