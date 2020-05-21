@@ -100,14 +100,13 @@ function createRock(x) {
      * the GAME, we want to move it again.
      */
     rock.style.top = `${top += rockSpeed}px`
-    if (top < 400) {
+    if (top < GAME_HEIGHT) {
      window.requestAnimationFrame(moveRock)
-      }
+   } else {
     /**
      * But if the rock *has* reached the bottom of the GAME,
      * we should remove the rock from the DOM.
      */
-     if(top == 400) {
        rockCount += 1
        COUNTER.innerHTML = `ROCKS DODGED: ${rockCount}`
        rock.remove(rock)
