@@ -7,9 +7,16 @@ const GAME_HEIGHT = 400
 const GAME_WIDTH = 400
 const LEFT_ARROW = 37 // use e.which!
 const RIGHT_ARROW = 39 // use e.which!
+const UP_ARROW = 38
 const ROCKS = []
 const START = document.getElementById('start')
+const COUNTER = document.getElementById("counter")
+const COLORS = ['white', 'gold', 'palegreen', 'springgreen', 'aqua', 'dodgerblue', 'indigo', 'orangered', 'hotpink', 'black']
 
+var dodgerColor = 0
+var rockCount = 0
+var rockSpeed = 1
+var rockFrequency = 1000
 var gameInterval = null
 
 /**
@@ -63,7 +70,6 @@ function createRock(x) {
 
   rock.className = 'rock'
   rock.style.left = `${x}px`
-
   // Hmmm, why would we have used `var` here?
   var top = 0
 
@@ -85,15 +91,15 @@ function createRock(x) {
      * we should call endGame().
      */
      if(checkCollision(rock)) {
-       rock.remove(rock)
        endGame()
-       window.location.reload(false);
+       window.location.reload(false)
+       return
      }
     /**
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
-    rock.style.top = `${top += 2}px`
+    rock.style.top = `${top += rockSpeed}px`
     if (top < 400) {
      window.requestAnimationFrame(moveRock)
       }
@@ -102,6 +108,8 @@ function createRock(x) {
      * we should remove the rock from the DOM.
      */
      if(top == 400) {
+       rockCount += 1
+       COUNTER.innerHTML = `ROCKS DODGED: ${rockCount}`
        rock.remove(rock)
        ROCKS.shift()
      }
@@ -129,7 +137,11 @@ function endGame() {
     removeRock.remove()
   }
   window.removeEventListener('keydown', moveDodger)
-  alert("YOU LOSE!")
+  if (rockCount == 1) {
+    alert("YOU LOSE! YOU DODGED 1 ROCK!")
+  } else {
+    alert(`YOU LOSE! YOU DODGED ${rockCount} ROCKS`)
+  }
   return
 }
 
@@ -150,6 +162,16 @@ function moveDodger(e) {
    if (e.which === RIGHT_ARROW) {
      e.preventDefault()
      moveDodgerRight()
+     e.stopPropagation()
+   }
+   if (e.which === UP_ARROW) {
+     e.preventDefault()
+     changeDodgerColor()
+     e.stopPropagation()
+   }
+   if (e.which === 40) {
+     e.preventDefault()
+     changeDodgerColorBack()
      e.stopPropagation()
    }
 }
@@ -185,6 +207,26 @@ function moveDodgerRight() {
    }
 }
 
+function changeDodgerColor() {
+    dodgerColor += 1
+    if (dodgerColor > COLORS.length) {
+      dodgerColor = 0
+    }
+    DODGER.style.backgroundColor = `${COLORS[dodgerColor]}`
+}
+
+ function changeDodgerColorBack() {
+   dodgerColor -= 1
+   if (dodgerColor < 0) {
+     dodgerColor = COLORS.length - 1
+   }
+   DODGER.style.backgroundColor = `${COLORS[dodgerColor]}`
+}
+
+function powerUp() {
+  
+}
+
 /**
  * @param {string} p The position property
  * @returns {number} The position as an integer (without 'px')
@@ -195,10 +237,25 @@ function positionToInteger(p) {
 
 function start() {
   window.addEventListener('keydown', moveDodger)
+  DODGER.addEventListener('click', changeDodgerColor)
 
   START.style.display = 'none'
 
+  rockFrequencyInterval = setInterval(function() {
+    if (rockFrequency > 500) {
+      rockFrequency -= 100
+    }
+    if (rockFrequency <=500 && rockFrequency >= 50) {
+      rockFrequency -= 50
+    }
+  }, 30000)
+
+  rockSpeedInterval = setInterval(function() {
+    rockSpeed ++
+  }, 20000)
+
   gameInterval = setInterval(function() {
     createRock(Math.floor(Math.random() *  (GAME_WIDTH - 20)))
-  }, 1000)
+  }, rockFrequency)
+
 }

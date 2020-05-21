@@ -13,6 +13,7 @@
   position: relative;
   text-align: center;
   width: 400px;
+  z-index: 1;
 }
 
 #start {
@@ -21,6 +22,18 @@
   position: relative;
   text-decoration: none;
   top: 4rem;
+}
+
+#counter {
+  position: absolute;
+  top: 0px;
+  right: 523px;
+  width: 145px;
+  color: white;
+  font-size: .9rem;
+  border: 2px dotted white;
+  padding: 1px 1px 1px 6px;
+  z-index: 2;
 }
 
 .rock {
