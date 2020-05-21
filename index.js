@@ -91,9 +91,7 @@ function createRock(x) {
      * we should call endGame().
      */
      if(checkCollision(rock)) {
-       endGame()
-       window.location.reload(false)
-       return
+       return endGame()
      }
     /**
      * Otherwise, if the rock hasn't reached the bottom of
